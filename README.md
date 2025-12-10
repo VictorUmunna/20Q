@@ -64,6 +64,25 @@ A fun and interactive 20 Questions game built with Python, OpenAI API, and Strea
 
 3. **Open your browser** to the URL shown in the terminal (usually `http://localhost:8501`)
 
+## Deploying to Streamlit Cloud
+
+1. **Push your code to GitHub** (make sure `.env` is in `.gitignore` - never commit API keys!)
+
+2. **Go to [Streamlit Cloud](https://streamlit.io/cloud)** and connect your repository
+
+3. **Set up your OpenAI API key**:
+   - In your Streamlit Cloud app dashboard, go to **Settings** → **Secrets**
+   - Add the following secret:
+     ```
+     OPENAI_API_KEY=your_openai_api_key_here
+     ```
+   - Replace `your_openai_api_key_here` with your actual OpenAI API key
+   - Click **Save**
+
+4. **Deploy your app** - Streamlit Cloud will automatically detect your `app.py` and deploy it
+
+**Note**: The `.env` file is only used for local development. On Streamlit Cloud, use the Secrets feature to securely store your API key.
+
 ## How to Play
 
 1. Click **"🔄 New Game"** or **"🚀 Start Game"** to begin

@@ -11,8 +11,21 @@ from openai import OpenAI
 # Load environment variables
 load_dotenv()
 
-# Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Initialize OpenAI client lazily
+_client = None
+
+def get_client():
+    """Get or create the OpenAI client."""
+    global _client
+    if _client is None:
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "OPENAI_API_KEY environment variable is not set. "
+                "Please set it in Streamlit Cloud secrets or your .env file."
+            )
+        _client = OpenAI(api_key=api_key)
+    return _client
 
 
 def initialize_game() -> List[Dict[str, str]]:
@@ -52,6 +65,7 @@ def get_ai_question(conversation_history: List[Dict[str, str]]) -> str:
         The AI's question or guess as a string
     """
     try:
+        client = get_client()
         response = client.chat.completions.create(
             model="gpt-4o-mini",  # Using gpt-4o-mini for cost efficiency, can switch to gpt-4 if needed
             messages=conversation_history,
@@ -61,6 +75,8 @@ def get_ai_question(conversation_history: List[Dict[str, str]]) -> str:
         
         ai_message = response.choices[0].message.content.strip()
         return ai_message
+    except ValueError as e:
+        return f"Configuration Error: {str(e)}"
     except Exception as e:
         return f"Error: {str(e)}. Please check your API key and try again."
 
