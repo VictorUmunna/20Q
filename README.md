@@ -4,12 +4,12 @@ A fun and interactive 20 Questions game built with Python, OpenAI API, and Strea
 
 ## Features
 
-- 🤖 AI-powered question generation using OpenAI GPT
-- 🎯 Smart guessing based on your answers
-- 📊 Track questions asked (up to 20, with extension to 25 if needed)
-- 📜 Full conversation history
-- 🎨 Clean and user-friendly Streamlit interface
-- 🔄 Easy game restart functionality
+- AI-powered question generation using OpenAI GPT
+- Smart guessing based on your answers
+- Track questions asked (up to 20, with extension to 25 if needed)
+- Full conversation history
+- Clean and user-friendly Streamlit interface
+- Easy game restart functionality
 
 ## Prerequisites
 

@@ -15,7 +15,7 @@ from utils import (
 # Page configuration
 st.set_page_config(
     page_title="20Q Game",
-    page_icon="❓",
+    page_icon="🎮",
     layout="centered"
 )
 
@@ -96,7 +96,7 @@ with col1:
         st.info("**Status:** Ready to play")
 
 with col2:
-    if st.button("🔄 New Game", use_container_width=True):
+    if st.button("New Game", use_container_width=True):
         start_new_game()
 
 # Game area
@@ -132,7 +132,7 @@ if st.session_state.game_active and not st.session_state.game_over:
 elif st.session_state.game_over:
     # Game over - show result
     if st.session_state.ai_guess:
-        st.success(f"### 🎯 I think the word is: **{st.session_state.ai_guess}**")
+        st.success(f"### I think the word is: **{st.session_state.ai_guess}**")
         st.markdown("Was I correct?")
         
         col1, col2 = st.columns(2)
@@ -149,7 +149,7 @@ elif st.session_state.game_over:
     else:
         st.warning("### ⏱️ Game Over!")
         st.markdown(f"I couldn't guess the word in {st.session_state.question_count} questions. You win!")
-        if st.button("🔄 Play Again", use_container_width=True):
+        if st.button("Play Again", use_container_width=True):
             start_new_game()
             st.rerun()
 
@@ -157,7 +157,7 @@ else:
     # Welcome screen
     st.markdown("""
     ### How to Play:
-    1. Click **"🔄 New Game"** to start
+    1. Click **"New Game"** to start
     2. Think of an English word
     3. Answer my questions with:
        - **Yes** ✅
@@ -167,14 +167,14 @@ else:
     4. I'll try to guess your word in 20 questions!
     """)
     
-    if st.button("🚀 Start Game", use_container_width=True, type="primary"):
+    if st.button("Start Game", use_container_width=True, type="primary"):
         start_new_game()
         st.rerun()
 
 # Conversation history
 if st.session_state.conversation_history and len(st.session_state.conversation_history) > 1:
     st.markdown("---")
-    st.markdown("### 📜 Conversation History")
+    st.markdown("### Conversation History")
     
     formatted_history = format_conversation_history(st.session_state.conversation_history)
     
