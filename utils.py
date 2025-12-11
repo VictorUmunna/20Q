@@ -67,7 +67,7 @@ def get_ai_question(conversation_history: List[Dict[str, str]]) -> str:
     try:
         client = get_client()
         response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Using gpt-4o-mini for cost efficiency, can switch to gpt-4 if needed
+            model="gpt-4o-mini", 
             messages=conversation_history,
             temperature=0.7,
             max_tokens=150
